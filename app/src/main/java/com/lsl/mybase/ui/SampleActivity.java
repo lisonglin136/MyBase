@@ -15,7 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observer;
-import rx.Subscription;
 
 public class SampleActivity extends BaseActivity {
 
@@ -38,9 +37,6 @@ public class SampleActivity extends BaseActivity {
 
     }
 
-
-
-
     private void postData() {
         //网络访问调用解释
         //1,设置请求体，以对象的形式设置
@@ -49,7 +45,7 @@ public class SampleActivity extends BaseActivity {
         registerBodyBean.setMobile("13512345678");
         registerBodyBean.setPlatformCode("MOBILE");
         //2,网络访问调用
-        Subscription subscription = RetrofitUtil.postNetData(NetUrl.getVerifyCode,
+         RetrofitUtil.postNetData(this,NetUrl.getVerifyCode,
                 registerBodyBean, new Observer<ResponseModel>() {
             @Override
             public void onCompleted() {
@@ -67,7 +63,6 @@ public class SampleActivity extends BaseActivity {
             }
         });
         //3,activity销毁的时候调用防止内存泄漏
-        addSubscrebe(subscription);
     }
 
 
