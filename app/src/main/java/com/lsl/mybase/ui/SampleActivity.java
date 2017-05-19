@@ -1,11 +1,11 @@
 package com.lsl.mybase.ui;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.lsl.mybase.R;
+import com.lsl.mybase.base.BaseActivity;
 import com.lsl.mybase.global.NetUrl;
 import com.lsl.mybase.model.RegisterBodyBean;
 import com.lsl.mybase.model.ResponseModel;
@@ -15,8 +15,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observer;
+import rx.Subscription;
 
-public class SampleActivity extends AppCompatActivity {
+public class SampleActivity extends BaseActivity {
 
     @BindView(R.id.tv)
     TextView mTv;
@@ -48,7 +49,8 @@ public class SampleActivity extends AppCompatActivity {
         registerBodyBean.setMobile("13512345678");
         registerBodyBean.setPlatformCode("MOBILE");
         //2,网络访问调用
-        RetrofitUtil.postNetData(NetUrl.getVerifyCode, registerBodyBean, new Observer<ResponseModel>() {
+        Subscription subscription = RetrofitUtil.postNetData(NetUrl.getVerifyCode,
+                registerBodyBean, new Observer<ResponseModel>() {
             @Override
             public void onCompleted() {
 
@@ -64,7 +66,8 @@ public class SampleActivity extends AppCompatActivity {
                 mTv.setText(responseModel.toString());
             }
         });
-
+        //3,activity销毁的时候调用防止内存泄漏
+        addSubscrebe(subscription);
     }
 
 

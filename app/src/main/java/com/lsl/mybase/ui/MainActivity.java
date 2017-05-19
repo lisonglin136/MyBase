@@ -2,11 +2,11 @@ package com.lsl.mybase.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.lsl.mybase.R;
+import com.lsl.mybase.base.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.functions.Action1;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 
     @BindView(R.id.bt)

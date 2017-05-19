@@ -1,5 +1,7 @@
 package com.lsl.mybase.network;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.lsl.mybase.global.NetUrl;
 import com.lsl.mybase.model.ResponseModel;
@@ -18,6 +20,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observer;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -28,21 +31,31 @@ public class RetrofitUtil {
      * 网络访问封装
      *
      * @param url      访问地址(不包含baseUrl)
-     * @param T         requestBody
+     * @param Object        requestBody
      * @param observer  observer
      */
-    public static <T> void postNetData(String url, T requestBody, Observer<ResponseModel> observer) {
+
+    /**
+     * @param context
+     * @param url
+     * @param requestBody
+     * @param observer
+     * @return
+     */
+    public static Subscription postNetData(String url, Object requestBody, Observer<ResponseModel>
+                                                   observer) {
         RequestModel requestModel = new RequestModel();
         requestModel.setBody(requestBody);
         HeadBean headBean = RequestHead.getHeadBean(requestBody);
         requestModel.setBody(headBean);
         Gson gson = new Gson();
         String parmJson = gson.toJson(requestModel);
-        RetrofitUtil.getApiService()
+        Subscription subscribe = RetrofitUtil.getApiService()
                 .postNetwork(url, ApiManager.toRequestBody(parmJson))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
+        return subscribe;
     }
 
     /**
