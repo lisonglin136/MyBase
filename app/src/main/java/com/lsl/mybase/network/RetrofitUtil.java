@@ -1,7 +1,6 @@
 package com.lsl.mybase.network;
 
 import com.google.gson.Gson;
-import com.lsl.mybase.base.BaseActivity;
 import com.lsl.mybase.global.NetUrl;
 import com.lsl.mybase.model.ResponseModel;
 import com.lsl.mybase.model.base.HeadBean;
@@ -26,17 +25,26 @@ import rx.schedulers.Schedulers;
 public class RetrofitUtil {
 
 
+//    /**
+//     * 网络访问封装
+//     * @param url           访问地址(不包含baseUrl)
+//     * @param             requestBody
+//     * @param observer      observer
+//     * @return
+//     */
 
     /**
-     * 网络访问封装
-     * @param url           访问地址(不包含baseUrl)
-     * @param T             requestBody
-     * @param observer      observer
-     * @return
+     * post网络访问
+     *
+     * @param url         访问地址(不包含baseUrl)
+     * @param requestBody 请求参数中的请求体实例对象
+     * @param observer    观察者
+     * @param <T>
+     * @return            Subscription对象，用于反注册观察者，防止内存泄漏
      */
-    public static <T>void postNetData(BaseActivity activity,String url, T requestBody,
-                                           Observer<ResponseModel>
-                                                   observer) {
+    public static <T> Subscription postNetData(String url, T requestBody,
+                                               Observer<ResponseModel>
+                                                       observer) {
         RequestModel requestModel = new RequestModel();
         requestModel.setBody(requestBody);
         HeadBean headBean = RequestHead.getHeadBean(requestBody);
@@ -48,7 +56,7 @@ public class RetrofitUtil {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
-        activity.addSubscrebe(subscribe);
+        return subscribe;
     }
 
     /**
