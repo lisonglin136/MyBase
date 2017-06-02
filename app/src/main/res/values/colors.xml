@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#ff5349</color>
+    <color name="colorPrimaryDark">#e43b31</color>
+    <color name="colorAccent">#0981e0</color>
     <color name="lucency">#00FFFFFF</color>
+
+
+    <color name="transparent">#00000000</color>
+    <color name="gray">#3d3d3d</color>
+    <color name="gray_button">#3d3d3d</color>
+    <color name="gray_little">#9a9a9a</color>
+    <color name="gray_brackground">#eeeeee</color>
+    <color name="gray_brackground_little">#f9f9f9</color>   <!--自定义的条目的点击背景-->
+    <color name="white">#ffffff</color>
+    <color name="red">#e11717</color>
+    <color name="green">#00ab03</color>
+    <color name="black">#1b1b1b</color>
+    <color name="black_transparent">#49000000</color>
+    <color name="black_content">#333333</color>
+    <color name="black_content_edittext">#333333</color>
+    <color name="black_button">#333333</color>
+
+    <!--Toobar字体颜色-->
+    <color name="toobar_title_white">#ffffff</color>
+
 </resources>

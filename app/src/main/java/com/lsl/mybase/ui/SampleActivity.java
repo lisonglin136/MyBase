@@ -23,9 +23,16 @@ public class SampleActivity extends BaseActivity {
     @BindView(R.id.bt)
     Button mBt;
 
+
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_sample;
+    }
+
+    @Override
+    protected void initTitle() {
+        initTitle("示例页面","左边文字","右边文字",true);
     }
 
     @Override

@@ -25,13 +25,6 @@ import rx.schedulers.Schedulers;
 public class RetrofitUtil {
 
 
-//    /**
-//     * 网络访问封装
-//     * @param url           访问地址(不包含baseUrl)
-//     * @param             requestBody
-//     * @param observer      observer
-//     * @return
-//     */
 
     /**
      * post网络访问

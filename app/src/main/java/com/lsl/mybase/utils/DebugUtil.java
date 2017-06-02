@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.apkfuns.logutils.LogUtils;
 
 /**
  * author:Created by lsl on 2017/5/17 14:35.
@@ -86,9 +85,9 @@ public class DebugUtil {
         }
     }
 
-    public static void toJson(String json) {
-        if (DEBUG) {
-            LogUtils.json(json);
-        }
-    }
+//    public static void toJson(String json) {
+//        if (DEBUG) {
+//            LogUtils.json(json);
+//        }
+//    }
 }
